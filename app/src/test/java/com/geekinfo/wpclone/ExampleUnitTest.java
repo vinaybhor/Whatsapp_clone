@@ -1,4 +1,4 @@
-package com.geekinfo.skeleton;
+package com.geekinfo.wpclone;
 
 import org.junit.Test;
 

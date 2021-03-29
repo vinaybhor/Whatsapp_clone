@@ -1,4 +1,4 @@
-package com.geekinfo.skeleton;
+package com.geekinfo.wpclone;
 
 import android.content.Context;
 

@@ -1,5 +1,6 @@
-package com.geekinfo.skeleton;
+package com.geekinfo.wpclone;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,13 +11,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignupActivity extends AppCompatActivity {
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     EditText et_email,et_pwd,et_pwd2;
-    //FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+    DatabaseReference myRef;
     private Button bt_login;
     private TextView tv_signp;
     @Override
@@ -28,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         et_pwd2 = findViewById(R.id.et_pwd2);
         tv_signp= findViewById(R.id.tv_signp);
         bt_login = findViewById(R.id.bt_login);
-       // mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +73,25 @@ public class SignupActivity extends AppCompatActivity {
                         }else {
                             Log.d("detectit", "createUserWithEmail:failure");
                         }
-                    });
-*/
+                    });*/
+
+            mAuth.createUserWithEmailAndPassword(email,pwd)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                Log.d("detectit", "createUserWithEmail:success");
+                                Intent intent = new Intent(SignupActivity.this,MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("detectit", "createUserWithEmail:failure "+e.toString());
+                }
+            });
         }
     }
 

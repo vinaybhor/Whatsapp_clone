@@ -1,4 +1,4 @@
-package com.geekinfo.skeleton;
+package com.geekinfo.wpclone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,7 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_email,et_pwd;
     private Button bt_login;
     private TextView tv_signp;
-    //FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+    DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         et_pwd = findViewById(R.id.et_pwd);
         tv_signp= findViewById(R.id.tv_signp);
         bt_login = findViewById(R.id.bt_login);
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         String pwd = et_pwd.getText().toString();
         if(validate(email)){
             //FireBase login goes here
-            /*mAuth.signInWithEmailAndPassword(email,pwd)
+            mAuth.signInWithEmailAndPassword(email,pwd)
                     .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()){
                             Log.d("detectit", "SigninWithEmail:success");
@@ -59,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                         }else {
                             Log.d("detectit", "SigninWithEmail:failure");
                         }
-                    });*/
+                    });
         }
 
     }
