@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+    <TextView
+        android:layout_margin="45dp"
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login To Continue"
+        android:textSize="26sp"
+        android:textColor="@color/black"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/tv_start"
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e8e8e8"
+        android:hint="Enter your Email ID"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/et_email"
+        android:id="@+id/et_pwd"
+        android:background="#e8e8e8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Password"
+        />
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/et_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:backgroundTint="#f05454"
+        android:text="Login"
+        android:textStyle="bold"
+        android:textSize="25sp"/>
+    <TextView
+        android:layout_margin="45dp"
+        android:layout_below="@+id/bt_login"
+        android:id="@+id/tv_signp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Don't have account? \n Sign up now"
+        android:gravity="center_horizontal" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/tv_signp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="99dp"
+        android:layout_marginBottom="-53dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_wave" />
+</RelativeLayout>
